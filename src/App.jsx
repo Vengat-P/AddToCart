@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Heading from "./Components/Heading/Navbar";
+import Heading from "./Components/Content/Navbar";
 import Content from "./Components/Content/Content";
 import axios from "axios";
+import Navbar from "./Components/Content/Navbar";
 const App = () => {
   //set state for store data from api
 
@@ -38,22 +39,7 @@ const App = () => {
 
   return (
     <>
-      <Heading />
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {/* use conditional rendering to check product  is there or not */}
-
-        {products.length > 0 ? (
-          products.map((product, index) => {
-            return (
-              <div key={index}>
-                <Content product={product} />
-              </div>
-            );
-          })
-        ) : (
-          <div> user not found </div>
-        )}
-      </div>
+      <Navbar products={products}/>
     </>
   );
 };

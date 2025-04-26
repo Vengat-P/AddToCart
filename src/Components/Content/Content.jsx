@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Navbar from './Navbar';
 
-const Content = ({product}) => {
+const Content = ({value,setValue,status,setStatus,product,cartItem,setCartItem}) => {
+
+ 
 //handle submit function to get added in cart details
 const handleSubmit = ()=>{
+    setStatus(false)
+    setValue(ele=>ele+1)
+    //cart list showing products
+   setCartItem(()=>{
+     const detail = {
+      id: product.id,
+      image: product.image,
+      title: product.title,
+      price: product.price
+    }
+    return [...cartItem, detail]
+   })
+         
+}
+
+
+const alertMsg = ()=>{
+    alert("Item Already Added")
+
     
 }
 
@@ -20,10 +42,15 @@ const handleSubmit = ()=>{
     <h2 className="card-title w-fit">{product.title}</h2>
     <p className="text-xl font-bold text-gray-500"> {product.price}$</p>
     <div className="card-actions justify-center">
-      <button className="btn btn-primary w-full text-xl " onClick={handleSubmit}>Add to Cart</button>
+      {status <=20 ? (
+        <button className="btn btn-primary w-full text-xl " onClick={handleSubmit}>Add to Cart</button>
+      ):(
+        <button className="btn btn-primary w-full text-xl "onClick={alertMsg}>Add to Cart</button>
+      )}
     </div>
   </div>
 </div> 
+
         </>
     );
 };
