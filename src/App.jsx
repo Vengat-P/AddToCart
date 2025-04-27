@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "./Components/Content/Navbar";
+import Navbar from "./Components/Product/Navbar";
 const App = () => {
   //set state for store data from api
 
