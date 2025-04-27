@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
 
-const Content = ({value,setValue,status,setStatus,product,cartItem,setCartItem}) => {
+const Content = ({value,setValue,status,setStatus,product,cartItems,setCartItem}) => {
 
  
 //handle submit function to get added in cart details
-const handleSubmit = ()=>{
+const handleSubmit = (e)=>{
     setStatus(false)
     setValue(ele=>ele+1)
     //cart list showing products
@@ -16,7 +16,7 @@ const handleSubmit = ()=>{
       title: product.title,
       price: product.price
     }
-    return [...cartItem, detail]
+    return [...cartItems , detail]
    })
          
 }
@@ -42,7 +42,7 @@ const alertMsg = ()=>{
     <h2 className="card-title w-fit">{product.title}</h2>
     <p className="text-xl font-bold text-gray-500"> {product.price}$</p>
     <div className="card-actions justify-center">
-      {status <=20 ? (
+      {status ? (
         <button className="btn btn-primary w-full text-xl " onClick={handleSubmit}>Add to Cart</button>
       ):(
         <button className="btn btn-primary w-full text-xl "onClick={alertMsg}>Add to Cart</button>
