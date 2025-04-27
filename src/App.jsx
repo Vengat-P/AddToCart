@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Heading from "./Components/Content/Navbar";
-import Content from "./Components/Content/Content";
 import axios from "axios";
 import Navbar from "./Components/Content/Navbar";
 const App = () => {
@@ -23,6 +21,7 @@ const App = () => {
       //store value in variable name (data from fake api )
       // to use axios we need to install in cmd propmt (npm i axios)
       const response = await axios.get("https://fakestoreapi.com/products");
+      //after geting data store that data in product state
       setProducts(response.data);
       setLoading(false);
     } catch (err) {
@@ -39,7 +38,8 @@ const App = () => {
 
   return (
     <>
-      <Navbar products={products}/>
+      {/* products displayed in content component products passed through navbar */}
+      <Navbar products={products} />
     </>
   );
 };
